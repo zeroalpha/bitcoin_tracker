@@ -32,6 +32,6 @@ class BitcoinAPI
   end
 end
 
-api = BitcoinAPI.new File.read('api_key.sec')
+api = BitcoinAPI.new File.read('api_key.sec').chomp
 binding.pry
 puts ""
