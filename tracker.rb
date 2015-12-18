@@ -10,7 +10,8 @@ class BitcoinAPI
     @API_KEY = api_key
     @URLS = {
       rate: URI('https://bitcoinapi.de/v1/' + @API_KEY + '/rate.json'),
-      orderbook: URI('https://bitcoinapi.de/v1/' + @API_KEY + '/orderbook.json')
+      orderbook: URI('https://bitcoinapi.de/v1/' + @API_KEY + '/orderbook.json'),
+      history: URI('https://bitcoinapi.de/v1/' + @API_KEY + '/trades.json')
     }
   end
 
@@ -23,12 +24,16 @@ class BitcoinAPI
     JSON.load(response.body)    
   end
 
-  def pull_current_orderbook
+  def pull_orderbook
     pull_data(:orderbook)
   end
 
-  def pull_current_rate
+  def pull_rate
     pull_data(:rate)
+  end
+
+  def pull_history
+    pull_data(:history)
   end
 end
 
